@@ -1770,22 +1770,6 @@ class PlayState extends MusicBeatState
 		// Per song offset check
 		#if windows
 			var songPath = 'assets/data/' + PlayState.SONG.song.toLowerCase() + '/';
-			for(file in sys.FileSystem.readDirectory(songPath))
-			{
-				var path = haxe.io.Path.join([songPath, file]);
-				if(!sys.FileSystem.isDirectory(path))
-				{
-					if(path.endsWith('.offset'))
-					{
-						trace('Found offset file: ' + path);
-						songOffset = Std.parseFloat(file.substring(0, file.indexOf('.off')));
-						break;
-					}else {
-						trace('Offset file not found. Creating one @: ' + songPath);
-						sys.io.File.saveContent(songPath + songOffset + '.offset', '');
-					}
-				}
-			}
 		#end
 		var daBeats:Int = 0;
 		for (section in noteData)
